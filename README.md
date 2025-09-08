@@ -1,2 +1,2 @@
-# SistemasDigitaisEmbarcados
-Disciplina  de Sistemas Digitais Embarcos com projetos de Linguagem de Descrição de Hardware
+# Sistemas Digitais Embarcados
+Disciplina de Sistemas Digitais Embarcados com projetos de Linguagem de Descrição de Hardware
