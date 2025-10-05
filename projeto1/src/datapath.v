@@ -5,10 +5,10 @@ module datapath(
     //Sinais de controle
     input op,
     input c_ld,
-    input c_clr
+    input c_clr,
 
     //Sinais de status
-    output z, m; //flags zero e maximo
+    output z, m, //flags zero e maximo
 
     //Saída de dados do sistema
     output [15:0] c_out // contador
