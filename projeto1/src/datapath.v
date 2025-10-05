@@ -1,6 +1,6 @@
 module datapath(
     input clk,
-    input rst,
+    input reset,
     
     //Sinais de controle
     input op,

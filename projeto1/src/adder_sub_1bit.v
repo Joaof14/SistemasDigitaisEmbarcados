@@ -8,7 +8,7 @@ module adder_sub_1bit (
 );
 
     wire b_eff = b^op; //se op for 1, subtração, inverte b
-    wire cin_eff = cin^op; //Se op for 1, inverte cin
+    wire cin_eff = cin;
 
     //FULL Adder
     assign sum = a^b_eff^cin_eff;
