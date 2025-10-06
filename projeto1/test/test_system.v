@@ -21,7 +21,7 @@ module test_system;
         u = 0;
         d = 0;
 
-        $dumpfile("sim/system_wave.vcd");
+        $dumpfile("../sim/system_wave.vcd");
         $dumpvars(0, test_system);
 
         $display("=== Teste do Sistema Completo ===");

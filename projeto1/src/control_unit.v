@@ -60,7 +60,7 @@ module control_unit(
 
             ESPERA_INC: begin
                 if (~u)
-                    next_state = ESPERA;
+                    next_state = VERIFICA;
                 else
                     next_state = ESPERA_INC;
 
@@ -72,7 +72,7 @@ module control_unit(
 
             ESPERA_DEC: begin
                 if (~d)
-                    next_state = ESPERA;
+                    next_state = VERIFICA;
                 else 
                     next_state = ESPERA_DEC;
             end
