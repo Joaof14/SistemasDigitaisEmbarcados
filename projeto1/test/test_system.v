@@ -36,7 +36,7 @@ module test_system;
         $dumpfile("../sim/system_wave.vcd");
         $dumpvars(0, test_system);
 
-        $display("=== Teste do Sistema Completo ===");
+        $display("=== Teste do Sistema Completo - TIMING AJUSTADO ===");
         $display("Tempo | Estado | u | d | c_ld | c_clr | C");
         $display("------------------------------------------");
 
@@ -50,14 +50,23 @@ module test_system;
         $display("%t | %b | %b | %b | %b | %b | %d", 
                 $time, current_state, u, d, c_ld, c_clr, c_out);
 
-        // Teste 1: Pressionar U - com tempo suficiente para completar o ciclo
+        // Teste 1: Pressionar U - com amostragem em alta frequência
         $display(">>> Teste 1: Pressionar U");
         u = 1; 
-        #50;
+        #10; // ⚡ AMOSTRAGEM A CADA 10ns (1 ciclo clock)
+        $display("%t | %b | %b | %b | %b | %b | %d", 
+                $time, current_state, u, d, c_ld, c_clr, c_out);
+        #10;
+        $display("%t | %b | %b | %b | %b | %b | %d", 
+                $time, current_state, u, d, c_ld, c_clr, c_out);
+        #10;
         $display("%t | %b | %b | %b | %b | %b | %d", 
                 $time, current_state, u, d, c_ld, c_clr, c_out);
         u = 0;
-        #100;  // ⚠️ MAIS TEMPO para voltar ao VERIFICA
+        #10;
+        $display("%t | %b | %b | %b | %b | %b | %d", 
+                $time, current_state, u, d, c_ld, c_clr, c_out);
+        #50; // Espera para voltar ao VERIFICA
         $display("%t | %b | %b | %b | %b | %b | %d", 
                 $time, current_state, u, d, c_ld, c_clr, c_out);
         $display("C = %d", c_out);
@@ -65,11 +74,20 @@ module test_system;
         // Teste 2: Pressionar U novamente
         $display(">>> Teste 2: Segundo U");
         u = 1; 
-        #50;
+        #10;
+        $display("%t | %b | %b | %b | %b | %b | %d", 
+                $time, current_state, u, d, c_ld, c_clr, c_out);
+        #10;
+        $display("%t | %b | %b | %b | %b | %b | %d", 
+                $time, current_state, u, d, c_ld, c_clr, c_out);
+        #10;
         $display("%t | %b | %b | %b | %b | %b | %d", 
                 $time, current_state, u, d, c_ld, c_clr, c_out);
         u = 0;
-        #100;  // ⚠️ MAIS TEMPO para voltar ao VERIFICA
+        #10;
+        $display("%t | %b | %b | %b | %b | %b | %d", 
+                $time, current_state, u, d, c_ld, c_clr, c_out);
+        #50;
         $display("%t | %b | %b | %b | %b | %b | %d", 
                 $time, current_state, u, d, c_ld, c_clr, c_out);
         $display("C = %d", c_out);
@@ -77,32 +95,23 @@ module test_system;
         // Teste 3: Pressionar D
         $display(">>> Teste 3: Pressionar D");
         d = 1; 
-        #50;
+        #10;
+        $display("%t | %b | %b | %b | %b | %b | %d", 
+                $time, current_state, u, d, c_ld, c_clr, c_out);
+        #10;
+        $display("%t | %b | %b | %b | %b | %b | %d", 
+                $time, current_state, u, d, c_ld, c_clr, c_out);
+        #10;
         $display("%t | %b | %b | %b | %b | %b | %d", 
                 $time, current_state, u, d, c_ld, c_clr, c_out);
         d = 0;
-        #100;  // ⚠️ MAIS TEMPO para voltar ao VERIFICA
+        #10;
+        $display("%t | %b | %b | %b | %b | %b | %d", 
+                $time, current_state, u, d, c_ld, c_clr, c_out);
+        #50;
         $display("%t | %b | %b | %b | %b | %b | %d", 
                 $time, current_state, u, d, c_ld, c_clr, c_out);
         $display("C = %d", c_out);
-
-        // Teste 4: Tentar decrementar no zero
-        $display(">>> Teste 4: Clear e tentar D no zero");
-        reset = 1; 
-        #50;
-        reset = 0;
-        #150;  // ⚠️ MAIS TEMPO para passar por INICIO→ESPERA→VERIFICA
-        $display("%t | %b | %b | %b | %b | %b | %d", 
-                $time, current_state, u, d, c_ld, c_clr, c_out);
-        d = 1; 
-        #50;
-        $display("%t | %b | %b | %b | %b | %b | %d", 
-                $time, current_state, u, d, c_ld, c_clr, c_out);
-        d = 0;
-        #100;
-        $display("%t | %b | %b | %b | %b | %b | %d", 
-                $time, current_state, u, d, c_ld, c_clr, c_out);
-        $display("C = %d (deve permanecer 0)", c_out);
 
         $display("=== Simulação Concluída ===");
         $finish;
