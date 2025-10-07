@@ -43,13 +43,17 @@ module control_unit(
                 next_state = VERIFICA;
             
             VERIFICA: begin
-                if (~z & ~m & ~u & d)
-                    next_state = DEC;
-                else if (~z & ~m & u & ~d)
+                // Incremento: não está no máximo e botão U pressionado
+                if (~m & u & ~d)
                     next_state = INC;
+                // Decremento: não está no zero e botão D pressionado  
+                else if (~z & ~u & d)
+                    next_state = DEC;
+                // Ambos botões: vai para ESPERA (clear)
                 else if (u & d)
                     next_state = ESPERA;
-                else 
+                // Nenhuma condição: mantém em VERIFICA
+                else
                     next_state = VERIFICA;
             end
 

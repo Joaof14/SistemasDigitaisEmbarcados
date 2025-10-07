@@ -2,3 +2,4 @@
 **/wave/**
 modelsim.ini
 vsim.wlf
+*.vcd
