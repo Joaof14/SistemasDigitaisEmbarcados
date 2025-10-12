@@ -7,14 +7,14 @@ module datapath (
     input op, c_ld, c_clr,
 
     // Sinal de status
-    output z, m
+    output z, m,
 
     //saída de dados
     output [15:0] c_out
 );
 
 
-    wire [15:0] current_c
+    wire [15:0] current_c;
     wire [15:0] next_c;
     wire cout;
 
