@@ -22,8 +22,8 @@ module datapath (
     register_16bit reg_c(
         .clk(clk),
         .reset(reset),
-        c_clr(c_clr),
-        c_ld(c_ld),
+        .c_clr(c_clr),
+        .c_ld(c_ld),
         .d_in(next_c),
         .q(current_c)
     );

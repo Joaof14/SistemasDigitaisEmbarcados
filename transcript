@@ -1,0 +1,328 @@
+cd {/home/joao/Área de Trabalho/jp_acad_prof/repositorios/SistemasDigitaisEmbarcados/projeto1/sim}
+# reading modelsim.ini
+run simulateDatapath.tcl
+# No Design Loaded!
+do simulateDatapath.tcl
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:34:19 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_1bit.v 
+# -- Compiling module adder_sub_1bit
+# 
+# Top level modules:
+# 	adder_sub_1bit
+# End time: 20:34:20 on Oct 12,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:34:20 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_16bit.v 
+# -- Compiling module adder_sub16bit
+# ** Error: (vlog-13069) ../src/adder_sub_16bit.v(17): near "+": syntax error, unexpected '+'.
+# End time: 20:34:20 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /home/joao/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog failed.
+# Error in macro ./simulateDatapath.tcl line 7
+# /home/joao/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog failed.
+#     while executing
+# "vlog ../src/adder_sub_16bit.v  "
+do simulateDatapath.tcl
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:34:57 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_1bit.v 
+# -- Compiling module adder_sub_1bit
+# 
+# Top level modules:
+# 	adder_sub_1bit
+# End time: 20:34:57 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:34:57 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_16bit.v 
+# -- Compiling module adder_sub16bit
+# ** Error: (vlog-13069) ../src/adder_sub_16bit.v(25): near ";": syntax error, unexpected ';', expecting ')'.
+# End time: 20:34:57 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /home/joao/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog failed.
+# Error in macro ./simulateDatapath.tcl line 7
+# /home/joao/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog failed.
+#     while executing
+# "vlog ../src/adder_sub_16bit.v  "
+do simulateDatapath.tcl
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:35:52 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_1bit.v 
+# -- Compiling module adder_sub_1bit
+# 
+# Top level modules:
+# 	adder_sub_1bit
+# End time: 20:35:52 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:35:52 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_16bit.v 
+# -- Compiling module adder_sub16bit
+# 
+# Top level modules:
+# 	adder_sub16bit
+# End time: 20:35:52 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:35:52 on Oct 12,2025
+# vlog -reportprogress 300 ../src/comparators.v 
+# -- Compiling module comparators
+# 
+# Top level modules:
+# 	comparators
+# End time: 20:35:52 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:35:52 on Oct 12,2025
+# vlog -reportprogress 300 ../src/register_16bit.v 
+# -- Compiling module register_16bit
+# 
+# Top level modules:
+# 	register_16bit
+# End time: 20:35:52 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:35:52 on Oct 12,2025
+# vlog -reportprogress 300 ../src/datapath.v 
+# -- Compiling module datapath
+# ** Error: (vlog-13069) ../src/datapath.v(25): near "c_clr": syntax error, unexpected IDENTIFIER, expecting .* or '.'.
+# End time: 20:35:52 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /home/joao/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog failed.
+# Error in macro ./simulateDatapath.tcl line 10
+# /home/joao/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog failed.
+#     while executing
+# "vlog ../src/datapath.v"
+do simulateDatapath.tcl
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:36:41 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_1bit.v 
+# -- Compiling module adder_sub_1bit
+# 
+# Top level modules:
+# 	adder_sub_1bit
+# End time: 20:36:41 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:36:41 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_16bit.v 
+# -- Compiling module adder_sub16bit
+# 
+# Top level modules:
+# 	adder_sub16bit
+# End time: 20:36:41 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:36:41 on Oct 12,2025
+# vlog -reportprogress 300 ../src/comparators.v 
+# -- Compiling module comparators
+# 
+# Top level modules:
+# 	comparators
+# End time: 20:36:41 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:36:41 on Oct 12,2025
+# vlog -reportprogress 300 ../src/register_16bit.v 
+# -- Compiling module register_16bit
+# 
+# Top level modules:
+# 	register_16bit
+# End time: 20:36:41 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:36:41 on Oct 12,2025
+# vlog -reportprogress 300 ../src/datapath.v 
+# -- Compiling module datapath
+# 
+# Top level modules:
+# 	datapath
+# End time: 20:36:41 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:36:41 on Oct 12,2025
+# vlog -reportprogress 300 ../test/test_datapath.v 
+# -- Compiling module test_datapath
+# 
+# Top level modules:
+# 	test_datapath
+# End time: 20:36:41 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim test_datapath 
+# Start time: 20:36:41 on Oct 12,2025
+# Loading work.test_datapath
+# Loading work.datapath
+# Loading work.register_16bit
+# Loading work.adder_sub16bit
+# Loading work.comparators
+# ** UI-Msg: (vish-4014) No objects found matching '/test_datapath/dut/current_c'.
+# Error in macro ./simulateDatapath.tcl line 17
+# ** UI-Msg: (vish-4014) No objects found matching '/test_datapath/dut/current_c'.
+#     while executing
+# "add wave -radix decimal /test_datapath/dut/current_c"
+do simulateDatapath.tcl
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:38:24 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_1bit.v 
+# -- Compiling module adder_sub_1bit
+# 
+# Top level modules:
+# 	adder_sub_1bit
+# End time: 20:38:24 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:38:25 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_16bit.v 
+# -- Compiling module adder_sub16bit
+# 
+# Top level modules:
+# 	adder_sub16bit
+# End time: 20:38:25 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:38:25 on Oct 12,2025
+# vlog -reportprogress 300 ../src/comparators.v 
+# -- Compiling module comparators
+# 
+# Top level modules:
+# 	comparators
+# End time: 20:38:25 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:38:25 on Oct 12,2025
+# vlog -reportprogress 300 ../src/register_16bit.v 
+# -- Compiling module register_16bit
+# 
+# Top level modules:
+# 	register_16bit
+# End time: 20:38:25 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:38:25 on Oct 12,2025
+# vlog -reportprogress 300 ../src/datapath.v 
+# -- Compiling module datapath
+# 
+# Top level modules:
+# 	datapath
+# End time: 20:38:25 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:38:25 on Oct 12,2025
+# vlog -reportprogress 300 ../test/test_datapath.v 
+# -- Compiling module test_datapath
+# 
+# Top level modules:
+# 	test_datapath
+# End time: 20:38:25 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 20:38:25 on Oct 12,2025, Elapsed time: 0:01:44
+# Errors: 0, Warnings: 0
+# vsim test_datapath 
+# Start time: 20:38:25 on Oct 12,2025
+# Loading work.test_datapath
+# Loading work.datapath
+# Loading work.register_16bit
+# Loading work.adder_sub16bit
+# Loading work.comparators
+# ** UI-Msg: (vish-4014) No objects found matching '/test_datapath/dut/current_c'.
+# Error in macro ./simulateDatapath.tcl line 17
+# ** UI-Msg: (vish-4014) No objects found matching '/test_datapath/dut/current_c'.
+#     while executing
+# "add wave -radix decimal /test_datapath/dut/current_c"
+do simulateDatapath.tcl
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:41:17 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_1bit.v 
+# -- Compiling module adder_sub_1bit
+# 
+# Top level modules:
+# 	adder_sub_1bit
+# End time: 20:41:18 on Oct 12,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:41:18 on Oct 12,2025
+# vlog -reportprogress 300 ../src/adder_sub_16bit.v 
+# -- Compiling module adder_sub16bit
+# 
+# Top level modules:
+# 	adder_sub16bit
+# End time: 20:41:18 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:41:18 on Oct 12,2025
+# vlog -reportprogress 300 ../src/comparators.v 
+# -- Compiling module comparators
+# 
+# Top level modules:
+# 	comparators
+# End time: 20:41:18 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:41:18 on Oct 12,2025
+# vlog -reportprogress 300 ../src/register_16bit.v 
+# -- Compiling module register_16bit
+# 
+# Top level modules:
+# 	register_16bit
+# End time: 20:41:18 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:41:18 on Oct 12,2025
+# vlog -reportprogress 300 ../src/datapath.v 
+# -- Compiling module datapath
+# 
+# Top level modules:
+# 	datapath
+# End time: 20:41:18 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:41:18 on Oct 12,2025
+# vlog -reportprogress 300 ../test/test_datapath.v 
+# -- Compiling module test_datapath
+# 
+# Top level modules:
+# 	test_datapath
+# End time: 20:41:18 on Oct 12,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 20:41:18 on Oct 12,2025, Elapsed time: 0:02:53
+# Errors: 0, Warnings: 0
+# vsim test_datapath 
+# Start time: 20:41:18 on Oct 12,2025
+# Loading work.test_datapath
+# Loading work.datapath
+# Loading work.register_16bit
+# Loading work.adder_sub16bit
+# Loading work.comparators
+# ** UI-Msg: (vish-4014) No objects found matching '/test_datapath/dut/current_c'.
+# Error in macro ./simulateDatapath.tcl line 17
+# ** UI-Msg: (vish-4014) No objects found matching '/test_datapath/dut/current_c'.
+#     while executing
+# "add wave -radix decimal /test_datapath/dut/current_c"
+# End time: 20:43:05 on Oct 12,2025, Elapsed time: 0:01:47
+# Errors: 0, Warnings: 0

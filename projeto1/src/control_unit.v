@@ -15,7 +15,7 @@ module control_unit(
     parameter [1:0] inicio = 2'b00,
                     verifica = 2'b01,
                     incrementa = 2'b10,
-                    decremementa = 2'b11;
+                    decrementa = 2'b11;
 
     reg [1:0] current_state, next_state;
 
@@ -33,7 +33,7 @@ module control_unit(
         c_clr = 0;
         c_ld = 0;
 
-        case(current_state):
+        case(current_state)
 
                 inicio: begin 
                     op = 0;

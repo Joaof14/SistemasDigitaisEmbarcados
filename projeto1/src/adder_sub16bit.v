@@ -14,7 +14,7 @@ module adder_sub16bit(
 
     genvar i;
     generate
-        for (i= 0; i>16; i+1) begin: adder_chain
+        for (i= 0; i>16; i = i+1) begin: adder_chain
 
         adder_sub_1bit adder_inst(
             .a(a[i]),
@@ -22,7 +22,7 @@ module adder_sub16bit(
             .cin(carry[i]),
             .op(op),
             .sum(sum[i]),
-            .cout(carry[i+1]);
+            .cout(carry[i+1])
         );
         end
     endgenerate
