@@ -4,14 +4,22 @@ module adder_sub_12bit(
 );
 
     wire carry[12:0];
-    assign
+    assign carry[0] = 0;
 
     genvar i;
     generate 
         for (i = 0, i<12, i = i+ 1) begin adder_chain 
-
+            adder_sub_1bit adder_inst(
+                .a(a[i]),
+                .b(b[i]),
+                .cin(carry[i]),
+                .sum(sum[i]),
+                cout(carry[i+1])
+            )
         end
 
     endgenerate
+
+    assign cout = carry[16];
 
 endmodule
