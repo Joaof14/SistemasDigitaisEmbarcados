@@ -28,7 +28,7 @@ module datapath (
         .q(current_c)
     );
 
-    adder_sub16bit alu(
+    adder_sub_16bit alu(
         .a(current_c),
         .b(16'b1),
         .op(op),

@@ -1,4 +1,4 @@
-module adder_sub16bit(
+module adder_sub_16bit(
     input [15:0] a,
     input [15:0] b,
     input op,
@@ -14,7 +14,7 @@ module adder_sub16bit(
 
     genvar i;
     generate
-        for (i= 0; i>16; i = i+1) begin: adder_chain
+        for (i= 0; i<16; i = i+1) begin: adder_chain
 
         adder_sub_1bit adder_inst(
             .a(a[i]),

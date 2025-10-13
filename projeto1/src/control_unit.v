@@ -9,7 +9,6 @@ module control_unit(
 
     //Saídas de comandos
     output reg op, c_clr, c_ld
-
 );
 
     parameter [1:0] inicio = 2'b00,
@@ -19,7 +18,7 @@ module control_unit(
 
     reg [1:0] current_state, next_state;
 
-    //Registro de inicialização/mudança de estado
+    // Registro de estado
     always @(posedge clk or posedge reset) begin
         if (reset) 
             current_state <= inicio;
@@ -27,50 +26,48 @@ module control_unit(
             current_state <= next_state;
     end
 
-    //Lógica de transição de estados e saídas
+    // Lógica combinacional
     always @(*) begin
+        // valores padrão
         op = 0;
         c_clr = 0;
         c_ld = 0;
+        next_state = current_state;
 
         case(current_state)
+            inicio: begin 
+                op = 0;
+                c_clr = 1;
+                c_ld = 0;
+                next_state = verifica;
+            end
 
-                inicio: begin 
-                    op = 0;
-                    c_clr = 1;
-                    c_ld = 0;
+            verifica: begin 
+                op = 0;
+                c_clr = 0;
+                c_ld = 0;
+
+                if (u & m & ~d)
+                    next_state = incrementa;
+                else if (d & z & ~u)
+                    next_state = decrementa;
+                else 
                     next_state = verifica;
-                end
-                    
+            end
 
-                verifica: begin 
-                    op = 0;
-                    c_clr = 0;
-                    c_ld = 0;
+            incrementa: begin 
+                op = 0;       // soma
+                c_clr = 0;
+                c_ld = 1;
+                next_state = verifica;
+            end
 
-                    if (u & m & ~d)
-                        next_state = incrementa;
-                    else if (~u &z &d)
-                        next_state = decrementa;
-                    else 
-                        next_state = verifica;
-                end
-
-                incrementa: begin 
-                    op = 0;
-                    c_clr = 0;
-                    c_ld = 1;
-                    next_state = verifica;
-                end
-
-                decrementa: begin
-                    op = 0;
-                    c_clr = 0;
-                    c_ld = 1;
-                    next_state = verifica;
-                end
+            decrementa: begin
+                op = 1;       // subtrai
+                c_clr = 0;
+                c_ld = 1;
+                next_state = verifica;
+            end
         endcase
     end
-
-
 endmodule

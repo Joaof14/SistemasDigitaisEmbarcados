@@ -1,32 +1,28 @@
-# Define o diretório de trabalho
-set work work
+# Limpa trabalho anterior
+quit -sim
 
-# Define os caminhos relativos
-set src_dir "../src"
-set test_dir "../test"
+# Cria biblioteca de trabalho
+vlib work
+vmap work work
 
-# Cria a library work
-vlib $work
-
-# Compila os módulos do datapath
-vlog -reportprogress 300 -work work $src_dir/datapath.v
-vlog -reportprogress 300 -work work $test_dir/test_datapath.v
+# Compila módulos do datapath
+vlog ../src/adder_sub_1bit.v
+vlog ../src/adder_sub_16bit.v  
+vlog ../src/comparators.v
+vlog ../src/register_16bit.v
+vlog ../src/datapath.v
+vlog ../test/test_datapath.v
 
 # Simula o testbench
-vsim -voptargs="+acc" test_datapath
+vsim test_datapath
 
-# Adiciona todas as ondas do datapath
-add wave -position insertpoint \
-sim:/test_datapath/uut/* \
-sim:/test_datapath/uut/reg_c/* \
-sim:/test_datapath/uut/alu/* \
-sim:/test_datapath/uut/comp/*
-
-# Configura a visualização
-wave zoom full
+# Adiciona sinais à janela de onda
+add wave -radix decimal /test_datapath/dut/c_out
+add wave /test_datapath/dut/op
+add wave /test_datapath/dut/c_ld
+add wave /test_datapath/dut/c_clr
+add wave /test_datapath/dut/z
+add wave /test_datapath/dut/m
 
 # Roda a simulação
-run -all
-
-# Mantém a janela aberta
-wave clock clk
+run 300ns

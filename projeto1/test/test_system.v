@@ -1,14 +1,16 @@
 `timescale 1ns / 1ps
 
 module test_system;
-    reg clk;
-    reg reset;
-    reg u;
-    reg d;
+    reg clk, reset;
+    reg u, d;
     wire [15:0] c_out;
 
-    // Instancia o sistema completo do diretório src
-    top_system uut (
+    // sinais internos para debug
+    wire [1:0] current_state;
+    wire op, c_ld, c_clr, z, m;
+
+    // instancia top_system
+    top_system dut(
         .clk(clk),
         .reset(reset),
         .u(u),
@@ -16,7 +18,16 @@ module test_system;
         .c_out(c_out)
     );
 
-    always #5 clk = ~clk;
+    // acesso aos sinais internos da FSM e datapath
+    assign current_state = dut.fsm.current_state;
+    assign op = dut.fsm.op;
+    assign c_ld = dut.fsm.c_ld;
+    assign c_clr = dut.fsm.c_clr;
+    assign z = dut.dp.z;
+    assign m = dut.dp.m;
+
+    // clock
+    always #5 clk = ~clk; // 10ns período
 
     initial begin
         clk = 0;
@@ -24,34 +35,59 @@ module test_system;
         u = 0;
         d = 0;
 
-        #20;
-        reset = 0;
+        $dumpfile("system_wave.vcd");
+        $dumpvars(0, test_system);
 
-        // Teste 1: u=1, d=0 (deve incrementar até m=0)
-        u = 1;
-        d = 0;
-        #200;
+        $display("=== Teste FSM + Datapath ===");
+        $display("Tempo | Estado | u | d | c_ld | c_clr | op | z | m | c_out");
+        $display("-----------------------------------------------------------");
 
-        // Teste 2: u=0, d=1 (deve decrementar até z=0)
+        // reset inicial
+        #20 reset = 0;
+        $display("%t | %b | %b | %b | %b | %b | %b | %b | %b | %d", 
+                 $time, current_state, u, d, c_ld, c_clr, op, z, m, c_out);
+
+        // Teste 1: Incrementar
+        $display(">>> Teste 1: Incrementar (u=1, d=0)");
+        u = 1; d = 0;
+        repeat (5) begin
+            #10;
+            $display("%t | %b | %b | %b | %b | %b | %b | %b | %b | %d", 
+                     $time, current_state, u, d, c_ld, c_clr, op, z, m, c_out);
+        end
         u = 0;
-        d = 1;
-        #200;
 
-        // Teste 3: u=0, d=0 (não faz nada)
-        u = 0;
+        // Teste 2: Decrementar
+        $display(">>> Teste 2: Decrementar (u=0, d=1)");
+        d = 1; u = 0;
+        repeat (5) begin
+            #10;
+            $display("%t | %b | %b | %b | %b | %b | %b | %b | %b | %d", 
+                     $time, current_state, u, d, c_ld, c_clr, op, z, m, c_out);
+        end
         d = 0;
-        #100;
 
-        // Teste 4: u=1, d=1 (não faz nada)
-        u = 1;
-        d = 1;
-        #100;
+        // Teste 3: Incrementar até limite máximo
+        $display(">>> Teste 3: Incrementar até o máximo (c_out=0xFFFF)");
+        u = 1; d = 0;
+        repeat (20) begin
+            #10;
+            $display("%t | %b | %b | %b | %b | %b | %b | %b | %b | %d", 
+                     $time, current_state, u, d, c_ld, c_clr, op, z, m, c_out);
+        end
+        u = 0;
 
+        // Teste 4: Decrementar até zero
+        $display(">>> Teste 4: Decrementar até zero (c_out=0)");
+        d = 1; u = 0;
+        repeat (20) begin
+            #10;
+            $display("%t | %b | %b | %b | %b | %b | %b | %b | %b | %d", 
+                     $time, current_state, u, d, c_ld, c_clr, op, z, m, c_out);
+        end
+        d = 0;
+
+        $display("=== Simulação Concluída ===");
         $finish;
-    end
-
-    initial begin
-        $monitor("Time = %0t, clk=%b, reset=%b, u=%b, d=%b, c_out=%d", 
-                 $time, clk, reset, u, d, c_out);
     end
 endmodule
