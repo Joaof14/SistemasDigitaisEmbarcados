@@ -1,0 +1,8 @@
+# Clock principal
+IO_LOC "sys_clk" 35;
+
+# LED
+IO_LOC "led" 15;
+
+# Botão de reset
+IO_LOC "sys_rst_n" 49;
