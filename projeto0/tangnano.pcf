@@ -1,0 +1,8 @@
+# Clock principal
+set_io sys_clk 35
+
+# LED
+set_io led 15
+
+# Botão de reset
+set_io sys_rst_n 49
