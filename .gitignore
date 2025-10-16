@@ -7,7 +7,7 @@ vsim.wlf
 *.qpf
 *.qsf
 *.qws
-src/db
-src/incremental_db
-src/output_files
-src/simulation
+**/src/db/**  
+**/src/incremental_db/**
+**/src/output_files/** 
+**/src/simulation/** 

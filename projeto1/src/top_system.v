@@ -21,12 +21,22 @@ module top_system (
 
     //sinais de status
     wire z, m;
+	 
+	 //divisor de clock
+	 
+	 wire slow_clk;
 
     //Instanciamento de datapath e controle
+	 
+	 clk_divider clk_div(
+	 .clk(clk),
+	 .reset(reset),
+	 .slow_clk(slow_clk),
+	 );
 
 
     control_unit fsm(
-        .clk(clk),
+        .clk(slow_clk),
         .reset(reset),
         .op(op),
         .c_clr(c_clr),
@@ -38,7 +48,7 @@ module top_system (
     );
 
     datapath dp(
-        .clk(clk),
+        .clk(slow_clk),
         .reset(reset),
         .op(op),
         .c_clr(c_clr),
