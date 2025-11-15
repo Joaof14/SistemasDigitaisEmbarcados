@@ -1,4 +1,0 @@
-# Projeto 1
-Projete um sistema digital utilizando a topologia RTL para descrever o seguinte comportamento: um sistema possui duas entradas, de bit, designadas por U e D, provindas de botões, e uma saída C de 16 bits, que inicialmente é zero. 
-Caso o botão U seja pressionado, o sistema incrementa C de uma unidade. Caso o botão D seja pressionado, o sistema decrementa C de uma unidade. 
-O sistema deve ser capaz de detectar o estouro de C, ou seja, não deve-se incrementar C caso ele já seja o seu valor máximo e não deve-se decrementar C caso ele já seja zero. Pressionar o botão significa que ele muda o seu valor de zero para um.

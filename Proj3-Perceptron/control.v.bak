@@ -1,0 +1,115 @@
+// Controle
+module control ( clk, rst, ld_N, clr_N, ld_Ep, clr_Ep, ld_w, clr_w, ld_e, clr_e, Epm, Nm);
+   // Declaração de portas
+   input clk, rst, /*status*/Epm, Nm;
+   output reg /*comandos*/ ld_N, clr_N, ld_Ep, clr_Ep, ld_w, clr_w, ld_e, clr_e;
+   
+   // Declarando estados da máquina
+   reg [1:0]  estado_atual, estado_proximo;
+   
+   parameter Start = 2'b00,
+   	         Wait = 2'b01,
+     	     Forward = 2'b10,
+     	     Backpropagation = 2'b11;
+   
+   // Reset e mudança de estado
+   always @(posedge clk, posedge rst) begin
+      if ( rst == 1 ) estado_atual <= Start;
+      else estado_atual <= estado_proximo;
+   end
+   
+   // Descrição comportamental
+   always @(estado_atual) begin
+      
+      // Inicializações — para evitar latches
+      estado_proximo = estado_atual;
+      /*
+	Insere aqui a lista de comandos setados
+       */
+        ld_N = 1'b0;
+        clr_N= 1'b0; 
+        ld_Ep = 1'b0;
+        clr_Ep = 1'b0; 
+        ld_w = 1'b0;
+        clr_w = 1'b0; 
+        ld_e = 1'b0;
+        clr_e = 1'b0;
+      
+      case (estado_atual)
+	Start : begin
+	
+	    ld_N = 1'b0;
+        clr_N= 1'b0; 
+        ld_Ep = 1'b0;
+        ld_w = 1'b0;
+        ld_e = 1'b0;
+        clr_e = 1'b1;
+	    clr_Ep = 1'b1;
+	    clr_w = 1'b1;
+	   
+	    estado_proximo = Wait;
+	end
+	
+	Wait : begin
+	   
+	    ld_N = 1'b0;
+        clr_N= 1'b1; 
+        ld_Ep = 1'b1;
+        clr_Ep = 1'b0; 
+        ld_w = 1'b0;
+        clr_w = 1'b0; 
+        ld_e = 1'b0;
+        clr_e = 1'b0;
+	    
+	    if(Epm == 1'b1) begin 
+	        estado_proximo = Forward;
+	    end
+	    else begin 
+	        estado_proximo = Wait;
+	        end
+           
+	end
+	
+	
+	Forward : begin
+           
+        ld_N= 1'b0;
+        clr_N= 1'b0; 
+        ld_Ep= 1'b0;
+        clr_Ep= 1'b0; 
+        ld_w= 1'b0;
+        clr_w= 1'b0; 
+        ld_e= 1'b0; //Pode ser que seja 1.
+        clr_e= 1'b0;
+        
+        estado_proximo = Backpropagation;
+       
+	end
+	
+	
+	Backpropagation : begin
+        ld_N = 1'b1;
+        clr_N= 1'b0; 
+        ld_Ep = 1'b0;
+        clr_Ep = 1'b0; 
+        ld_w = 1'b1;
+        clr_w = 1'b0; 
+        ld_e = 1'b1; //pode ser no forward
+        clr_e = 1'b0;
+        
+        if(Nm == 1'b1) begin
+            estado_proximo = Forward;
+        end
+        else begin
+            estado_proximo = Wait;
+        end
+	end
+	
+	
+	
+	default : begin
+	   estado_proximo = Start;
+	end
+      endcase
+   end
+endmodule

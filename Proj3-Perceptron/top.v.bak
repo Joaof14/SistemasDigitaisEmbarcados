@@ -1,0 +1,52 @@
+module top( clk, btn1, btn2, led );
+   
+   input clk;
+   input btn1, btn2;
+   output [5:0] led;
+
+   // Frq do clk de 27Mhz, mas quero contar ate metade  
+   reg [23:0] contador = 24'hFFFFFF;
+   reg clk_n;
+
+   always @(posedge clk) begin
+      if ( !btn1 ) contador <= 24'd0;
+      else if ( contador == 24'd13500000 ) begin
+	 contador <= 24'd0;
+	 //led <= ~led;
+      end
+      else contador <= contador + 1;
+      clk_n = ( contador == 24'd0 );
+   end
+
+   // Sinais de controle
+   wire /*comandos*/ ld_N, clr_N, ld_Ep, clr_Ep, ld_w, clr_w, ld_e, clr_e;
+   wire /*status*/ Epm, Nm;
+   wire [7:0] w0, w1;
+   wire op;
+
+   // Conversão de reset ativo baixo
+   wire rst = ~btn1;
+
+   // Instancia o módulo de controle (FSM)
+    control ctrl (
+        .clk(clk_n),
+        .rst(rst),
+        /*lista de comandos e status*/
+    );
+
+    // Instancia o módulo datapath (perceptron)
+    datapath dp (
+        .clk(clk_n),
+        /*lista de comandos e status*/
+        .w0(w0),
+        .w1(w1)
+    );
+    
+    
+    
+
+   // 3 leds - parte baixa de w0
+   // 3 leds - parte baixa de w1
+   assign led = {w0[2:0], w1[2:0]};
+   
+endmodule

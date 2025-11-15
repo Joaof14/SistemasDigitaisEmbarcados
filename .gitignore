@@ -4,10 +4,8 @@ modelsim.ini
 vsim.wlf
 **.vcd
 **.json
-*.qpf
-*.qsf
-*.qws
-**/src/db/**  
-**/src/incremental_db/**
-**/src/output_files/** 
-**/src/simulation/** 
+**/db/**  
+**/incremental_db/**
+**/output_files/** 
+**/simulation/** 
+**/incremental_db/**
