@@ -3,7 +3,7 @@ module piscaled(input wire clk,
 
 
     //Divisor de clk
-    parameter CLK_FREQ = 27_000_000; // Frequência padrão do clock (50 MHz)
+    parameter CLK_FREQ = 50_000_000; // Frequência padrão do clock (50 MHz)
     parameter BLINK_FREQ = 1;        // Frequência desejada do LED (1 Hz)
 
     // Cálculo do contador (ajuste conforme necessidade)
