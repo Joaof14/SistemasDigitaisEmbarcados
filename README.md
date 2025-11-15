@@ -1,49 +1,86 @@
+# Embedded Digital Systems
 
+This repository contains projects developed for the **Embedded Digital Systems** course, using **Verilog (HDL)** for FPGA simulation and synthesis.
 
-# Sistemas Digitais EmbarcadosRepositório com projetos da disciplina de **Sistemas Digitais Embarcados**, implementados em **Verilog (HDL)** com fluxos de simulação e síntese para FPGA.## 📋 Conteúdo do repositório### Projetos- **projeto0/** — Escala de Pixel (RTL)  - Escalonador de pixel para processamento de imagem.  - Fluxo: Yosys + nextpnr / Quartus.  - Alvo: Tang Nano / Cyclone.  - [Veja readme](projeto0/readme.md)- **projeto1/** — Contador U/D (RTL)  - Contador bidirecional 16 bits com detecção de overflow/underflow.  - Entradas: U (incrementa), D (decrementa).  - Saída: C (16 bits, valor do contador).  - Implementação: datapath + control unit (FSM).  - [Veja readme](projeto1/readme.md)- **projeto2/** — Máquina de Doces (RTL)  - Sistema gerenciador de moedas e dispensa de doces.  - Entradas: C1C0 (tipo de moeda), S (botão de solicitação).  - Saídas: D (acumulador 12 bits), R (pulso de liberação).  - Lógica: soma moedas, autoriza venda quando saldo ≥ 80¢.  - [Veja readme](projeto2/readme.md)- **PerceptronEmbarcado/** — Perceptron (RTL)  - Implementação de rede neural perceptron em hardware.  - Fluxo: Quartus.  - [Veja readme](PerceptronEmbarcado/readme.md)## 🚀 Como começar### Simular um projeto (ModelSim / Questa)1. Navegue até a pasta do projeto (ex.: `projeto1/`).2. Compile:   ````bash   vlog src/*.v test/*.v
-Simule:
+## Included Projects
 
-vsim work.test_system
-(Opcional) Use scripts TCL para adicionar waveforms:
+- **projeto0/** — Pixel Scaling (RTL)
+  - Pixel scaler for image processing.
+  - Flow: Yosys + nextpnr or Quartus.
+  - Target: Tang Nano / Cyclone.
 
-do sim/run_System.tcl
-Sintetizar para FPGA
-Projeto 0 (Makefile + Yosys/nextpnr):
+- **projeto1/** — Up/Down Counter (RTL)
+  - 16-bit bidirectional counter with overflow/underflow detection.
+  - Inputs: U (increment), D (decrement).
+  - Output: C (16 bits).
+  - Implementation: datapath + control unit (FSM).
 
+- **projeto2/** — Candy Machine (RTL)
+  - Coin manager and candy dispenser system.
+  - Inputs: C1C0 (coin type), S (request button).
+  - Outputs: D (12-bit accumulator), R (release pulse).
+  - Logic: sums coins, authorizes sale when balance ≥ 80¢.
 
-cd projeto0make              # gera bitstreammake load         # programa a placamake clean        # limpa builds
-Projeto 1 e 2 (Quartus):
+- **PerceptronEmbarcado/** — Perceptron (RTL)
+  - Hardware implementation of a perceptron neural network.
+  - Flow: Quartus.
 
-Abra arquivo .qpf em Quartus Prime.
-Compile e programe via Quartus Programmer.
-🔧 Requisitos
-Simulação:
+## How to Simulate
 
-ModelSim / Questa / Vivado Simulator / iverilog + gtkwave
-Síntese:
+1. Enter the desired project folder.
+2. Compile source and testbench files:
+   ```bash
+   vlog src/*.v test/*.v
+   ```
+3. Run the testbench:
+   ```bash
+   vsim work.test_system
+   ```
+4. (Optional) Use TCL scripts to add signals to the waveform:
+   ```bash
+   do sim/run_System.tcl
+   ```
 
-Projeto 0: Yosys, nextpnr, gowin_pack, openFPGALoader (fluxo aberto) OU Quartus Prime
-Projeto 1-2: Quartus Prime
-PerceptronEmbarcado: Quartus Prime
-Hardware (opcional):
+## How to Synthesize
 
-Tang Nano 1K / Tang Nano 4K (Gowin FPGA)
-Intel Cyclone / Altera (Quartus)
-📚 Estrutura comum dos projetos
+- **Project 0 (Makefile + Yosys/nextpnr):**
+  ```bash
+  cd projeto0
+  make              # generates bitstream
+  make load         # programs the board
+  make clean        # cleans build files
+  ```
+  > Note: If using `nextpnr-himbaechel`, remove the `--cst` option from the Makefile.
 
-projetoX/├── src/                 # Fontes Verilog│   ├── *.v             # Módulos principais│   └── ...├── test/               # Testbenches│   ├── test_*.v        # Testbenches para simulação│   └── ...├── sim/                # Scripts de simulação│   ├── *.tcl           # Scripts para ModelSim/Questa│   └── *.vcd           # Waveforms (saídas de simulação)├── output_files/       # Saídas de síntese (bitstream, `.sof`, `.fs`)├── db/ / incremental_db/  # Diretórios de build (ignorar)├── makefile            # Script de build (se aplicável)├── *.cst / *.lpf / *.pcf  # Constraints (pinos)├── *.qpf / *.qsf       # Projeto Quartus (se aplicável)└── readme.md           # Documentação específica do projeto
-⚠️ Dicas importantes
-Alta impedância (z) em sinais: verifique se a porta está conectada no módulo superior (ex.: top_system.c_out).
-Botões não reagem: inspecione se a FSM detecta borda corretamente (u && !u_prev).
-Debounce: a detecção de borda não é debounce; para aplicações reais, implemente filtro temporal.
-nextpnr com himbaechel: remova --cst do NEXTPNR_FLAGS se não suportado.
-Erros de compilação: verifique sintaxe Verilog, nomes de módulos/portas e que testbenches referenciam instâncias corretas (uut, não dut).
-📖 Documentação
-Cada projeto tem seu próprio readme.md com detalhes específicos.
-Para fluxo de síntese detalhado, veja projeto0/readme.md.
-Para simular e depurar, veja projeto1/readme.md (referência de boas práticas).
-📄 Licença
-Todos os projetos neste repositório são licenciados sob a MIT License.
+- **Projects with Quartus:**
+  - Open the `.qpf` project in Quartus Prime.
+  - Compile and program using Quartus Programmer.
+
+## Typical Project Structure
+
+```
+projetoX/
+├── src/                 # Verilog sources
+├── test/                # Testbenches
+├── sim/                 # Simulation scripts
+├── output_files/        # Synthesis outputs
+├── db/ / incremental_db/  # Build directories (ignore)
+├── makefile             # Build script (if applicable)
+├── *.cst / *.lpf / *.pcf  # Pin constraints
+├── *.qpf / *.qsf        # Quartus project (if applicable)
+└── readme.md            # Project documentation
+```
+
+## Quick Tips
+
+- High impedance signals (`z`): check if the port is connected in the top module.
+- Buttons: edge detection (`u && !u_prev`) **is not debounce**; for real hardware, implement a temporal filter.
+- Compilation errors: review instance names and module connections.
+- For flow questions, see the specific project readme.
+
+## License
+
+This repository is licensed under the **MIT License**:
 
 
 
