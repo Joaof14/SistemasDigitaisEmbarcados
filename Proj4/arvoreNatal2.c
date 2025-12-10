@@ -69,9 +69,9 @@ int main( void ){
 
         //Ligar e desligar todos de uma vez
         on_all();
-        _delay_ms(10000);
+        _delay_ms(500);
         off_all();
-        _delay_ms(10000);
+        _delay_ms(500);
 
         //Ligar e desligar por camadas unitaria
         layers_unit();
