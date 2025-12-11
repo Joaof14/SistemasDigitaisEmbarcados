@@ -3,6 +3,31 @@
 #include <avr/io.h> // Including library avr
 #include <util/delay.h> //Procurar biblioteca
 
+void on_all(){
+  PORTB |= (1<<5) | PORTB | (1<<4) | PORTB | (1<<3) | (1<<2) | (1<<1) | (1<<0);
+}
+void off_all(){
+  PORTB &= ~ ((1<<5) | PORTB | (1<<4) | PORTB | (1<<3) | (1<<2) | (1<<1) | (1<<0));
+}
+
+void off_step_unit(){
+
+}
+
+void off_step_unit(){
+
+}
+
+void on_step(){
+
+}
+
+void off_step(){
+
+}
+
+void 
+
 int main( void ){
 
     //Setup
