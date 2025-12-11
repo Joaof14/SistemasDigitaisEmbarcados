@@ -1,7 +1,7 @@
 #
 # Makefile
 #
-FILENAME   = led
+FILENAME   = Pratica1
 PORT       = /dev/ttyUSB0
 DEVICE     = atmega328p
 PROGRAMMER = arduino
@@ -24,3 +24,4 @@ clean:
 	rm $(FILENAME).o
 	rm $(FILENAME).elf
 	rm $(FILENAME).hex
+
