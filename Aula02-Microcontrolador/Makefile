@@ -1,7 +1,7 @@
 #
 # Makefile
 #
-FILENAME   = Pratica1
+FILENAME   = Pratica1_loop
 PORT       = /dev/ttyUSB0
 DEVICE     = atmega328p
 PROGRAMMER = arduino
