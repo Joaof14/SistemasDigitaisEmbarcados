@@ -1,3 +1,5 @@
+#define F_CPU 16000000UL // Defining clock
+
 #include <avr/io.h> // Including library avr
 #include <util/delay.h> //Procurar biblioteca
 
